@@ -49,6 +49,7 @@ a {
 .time small {
   font-size: 24px;
   vertical-align: middle;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 footer {

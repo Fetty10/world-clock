@@ -4,18 +4,8 @@ function runMinutes() {
   let lagosTimeElement = document.querySelector("#lagos .time");
   let lagosCountryZone = moment().tz("Africa/Lagos");
 
-  lagosDateElement.innerHTML = lagosCountryZone.format("MMMM Do YYYY");
+  lagosDateElement = lagosCountryZone.format("MMMM Do YYYY");
   lagosTimeElement.innerHTML = lagosCountryZone.format(
-    "h:mm:ss [<small>]A[</small>]"
-  );
-
-  // London
-  let londonDateElement = document.querySelector("#london .date");
-  let londonTimeElement = document.querySelector("#london .time");
-  let londonCountryZone = moment().tz("Europe/London");
-
-  londonDateElement.innerHTML = londonCountryZone.format("MMMM Do YYYY");
-  londonTimeElement.innerHTML = londonCountryZone.format(
     "h:mm:ss [<small>]A[</small>]"
   );
 
@@ -28,16 +18,28 @@ function runMinutes() {
   sydneyTimeElement.innerHTML = sydneyCountryZone.format(
     "h:mm:ss [<small>]A[</small>]"
   );
+}
+runMinutes();
+setInterval(runMinutes, 1000);
 
-  // Tokyo
-  let tokyoDateElement = document.querySelector("#tokyo .date");
-  let tokyoTimeElement = document.querySelector("#tokyo .time");
-  let tokyoCountryZone = moment().tz("Asia/Tokyo");
-
-  tokyoDateElement.innerHTML = tokyoCountryZone.format("MMMM Do YYYY");
-  tokyoTimeElement.innerHTML = tokyoCountryZone.format(
-    "h:mm:ss [<small>]A[</small>]"
-  );
+function changeCity(event) {
+  let cityTimeZone = event.target.value;
+  let cityName = cityTimeZone.split("/")[1];
+  let cityTime = moment().tz(cityTimeZone);
+  let citiesElement = document.querySelector("#cities");
+  citiesElement.innerHTML = `
+    <div class="city">
+      <div>
+        <h2>${cityName}</h2>
+        <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+      </div>
+        <div class="time">${cityTime.format(
+          "h:mm:ss"
+        )} <small>${cityTime.format("A")}</small></div>
+        </div>
+  `;
 }
 
-setInterval(runMinutes, 1000);
+let selectCityElement = document.querySelector("#city");
+
+selectCityElement.addEventListener("change", changeCity);

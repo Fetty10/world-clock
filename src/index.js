@@ -12,10 +12,20 @@ function runMinutes() {
   // Sydney
   let sydneyDateElement = document.querySelector("#sydney .date");
   let sydneyTimeElement = document.querySelector("#sydney .time");
-  let sydneyCountryZone = moment().tz("Australia/sydney");
+  let sydneyCountryZone = moment().tz("Australia/Sydney");
 
   sydneyDateElement.innerHTML = sydneyCountryZone.format("MMMM Do YYYY");
   sydneyTimeElement.innerHTML = sydneyCountryZone.format(
+    "h:mm:ss [<small>]A[</small>]"
+  );
+
+  // Tokyo
+  let tokyoDateElement = document.querySelector("#tokyo .date");
+  let tokyoTimeElement = document.querySelector("#tokyo .time");
+  let tokyoCountryZone = moment().tz("Asia/Tokyo");
+
+  tokyoDateElement.innerHTML = tokyoCountryZone.format("MMMM Do YYYY");
+  tokyoTimeElement.innerHTML = tokyoCountryZone.format(
     "h:mm:ss [<small>]A[</small>]"
   );
 }

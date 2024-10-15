@@ -4,7 +4,7 @@ function runMinutes() {
   let lagosTimeElement = document.querySelector("#lagos .time");
   let lagosCountryZone = moment().tz("Africa/Lagos");
 
-  lagosDateElement = lagosCountryZone.format("MMMM Do YYYY");
+  lagosDateElement.innerHTML = lagosCountryZone.format("MMMM Do YYYY");
   lagosTimeElement.innerHTML = lagosCountryZone.format(
     "h:mm:ss [<small>]A[</small>]"
   );
@@ -40,6 +40,7 @@ function changeCity(event) {
           "h:mm:ss"
         )} <small>${cityTime.format("A")}</small></div>
         </div>
+        <a href="/">Referesh</a>
   `;
 }
 
